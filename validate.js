@@ -75,6 +75,7 @@ let checkEmpty = (inputs) => {
     inputs.forEach((input) => {
         if (input.value.trim() === '') {
             input.style.borderColor = 'red';
+            addFeedback(input, false, 'This cannot be empty :(');
             emptyCount++;
         }
     });
