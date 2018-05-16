@@ -93,6 +93,19 @@ let insertAfter = (parent, nodeA, nodeB) => {
 };
 
 /**
+ * [clearFeedback clear old feedback before adding in new one]
+ * @param  {[DOM]} parent  [parent node of be input being validated]
+ * @return {[type]}        [no return]
+ */
+let clearFeedback = (parent) => {
+    let oldFeedback = parent.querySelector('.feedback');
+    // make sure oldFeedback exist before trying to delete
+    if (oldFeedback !== null) {
+        parent.removeChild(oldFeedback);
+    }
+};
+
+/**
  * [addFeedback add feedback for each input validated]
  * @param {[DOM]}  input    [input being validated]
  * @param {Boolean} isValid [input is valid or not]
@@ -111,6 +124,8 @@ let addFeedback = (input, isValid, text) => {
     feedback.style.display = 'block';
     // add in custom identifier for feedback div
     feedback.classList.add('feedback');
+    // clear old feedback before add in new one
+    clearFeedback(parentNode);
     // insert feedback after input
     insertAfter(parentNode, input, feedback);
 };
