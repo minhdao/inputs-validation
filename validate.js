@@ -76,6 +76,39 @@ let checkEmpty = (inputs) => {
     }
 };
 
+/**
+ * [insertAfter insert a DOM nodeB after nodeA]
+ * @param  {[DOM]} parent [parent node of nodeA and nodeB]
+ * @param  {[DOM]} nodeA  [node already exist inside parent]
+ * @param  {[DOM]} nodeB  [new node to be added after nodeA]
+ * @return {[type]}       [no return]
+ */
+let insertAfter = (parent, nodeA, nodeB) => {
+    // make sure nodeA is the last element of the parent node for this to work
+    // nodeA.nextSibling is null since nodeA is the last node inside parent
+    // adding before null means adding after nodeA
+    parent.insertBefore(nodeB, nodeA.nextSibling);
+};
+
+/**
+ * [addFeedback add feedback for each input validated]
+ * @param {[DOM]}  input    [input being validated]
+ * @param {Boolean} isValid [input is valid or not]
+ * @param {[string]}  text  [feedback for user to read]
+ */
+let addFeedback = (input, isValid, text) => {
+    let parentNode = input.parentNode;
+    let feedback = document.createElement('div');
+    if (isValid) {
+        feedback.classList.add('valid-feedback');
+    } else {
+        feedback.classList.add('invalid-feedback');
+    }
+    feedback.innerHTML = text;
+    feedback.style.display = 'block';
+    insertAfter(parentNode, input, feedback);
+};
+
 // validate inputs when form submitted
 document.querySelector('#myform').addEventListener('submit', (event) => {
     // disable default form reload
