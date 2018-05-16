@@ -11,8 +11,10 @@ requiredInputs.forEach((input) => {
         input.value = prepareInput(input.value);
         if (emptyInput(input.value)) {
             input.style.borderColor = 'red';
+            addFeedback(input, false, 'Cannot be empty :(');
         } else {
             input.style.borderColor = 'green';
+            addFeedback(input, true, 'Looks good :)');
         }
     });
 });
@@ -105,7 +107,11 @@ let addFeedback = (input, isValid, text) => {
         feedback.classList.add('invalid-feedback');
     }
     feedback.innerHTML = text;
+    // make sure the feedback is seen
     feedback.style.display = 'block';
+    // add in custom identifier for feedback div
+    feedback.classList.add('feedback');
+    // insert feedback after input
     insertAfter(parentNode, input, feedback);
 };
 
