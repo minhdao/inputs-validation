@@ -25,8 +25,10 @@ emails.forEach((email) => {
         email.value = prepareInput(email.value);
         if (validEmail(email.value)) {
             email.style.borderColor = 'green';
+            addFeedback(email, true, 'Looks good :)');
         } else {
             email.style.borderColor = 'red';
+            addFeedback(email, false, 'Looks like empty for bad format :(');
         }
     });
 });
@@ -37,8 +39,10 @@ phones.forEach((phone) => {
         phone.value = prepareInput(phone.value);
         if (validPhone(phone.value)) {
             phone.style.borderColor = 'green';
+            addFeedback(phone, true, 'Look good :)');
         } else {
             phone.style.borderColor = 'red';
+            addFeedback(phone, false, 'Bad format :(');
         }
     });
 });
@@ -49,10 +53,14 @@ passwords.forEach((password) => {
         password.value = prepareInput(password.value);
         if (validPasswords(passwords[0].value, passwords[1].value)) {
             passwords[0].style.borderColor = 'green';
+            addFeedback(passwords[0], true, 'Look good :)');
             passwords[1].style.borderColor = 'green';
+            addFeedback(passwords[1], true, 'Look good :)');
         } else {
             passwords[0].style.borderColor = 'red';
+            addFeedback(passwords[0], false, 'Empty or not matched :(');
             passwords[1].style.borderColor = 'red';
+            addFeedback(passwords[1], false, 'Empty or not matched :(');
         }
     });
 });
