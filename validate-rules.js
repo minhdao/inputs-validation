@@ -41,14 +41,15 @@ let emptyInput = (input) => {
  * @return {[boolean]}       [true if passes regex, false otherwise]
  */
 let validEmail = (email) => {
+    console.log('valid email called ... ');
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emptyInput(email)) {
-        return false;
+    if (!emptyInput(email).isValid) {
+        return new ValidationResult(false, 'Such empty :(', 'red');
     }
     if (!regex.test(email)) {
-        return false;
+        return new ValidationResult(false, 'Such invalid :(', 'red');
     }
-    return true;
+    return new ValidationResult(true, 'Looks good :)', 'green');
 };
 
 /**

@@ -19,13 +19,11 @@ requiredInputs.forEach((input) => {
 emails.forEach((email) => {
     email.addEventListener('input', (event) => {
         email.value = prepareInput(email.value);
-        if (validEmail(email.value)) {
-            email.style.borderColor = 'green';
-            addFeedback(email, true, 'Looks good :)');
-        } else {
-            email.style.borderColor = 'red';
-            addFeedback(email, false, 'Looks like empty for bad format :(');
-        }
+        console.log(email.value);
+        let result = validEmail(email.value);
+        console.log(result);
+        email.style.borderColor = result.color;
+        addFeedback(email, result.isValid, result.text);
     });
 });
 
