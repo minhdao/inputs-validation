@@ -76,17 +76,14 @@ let validPhone = (phone) => {
  */
 let validPasswords = (password1, password2) => {
     let regex = /^[a-zA-Z0-9!@#$%^&*]{6,}/;
-    if (emptyInput(password1) || emptyInput(password2)) {
-        return false;
+    if (!emptyInput(password1).isValid || !emptyInput(password2).isValid) {
+        return new ValidationResult(false, 'Such empty :(', 'red');
     }
     if (!regex.test(password1) || !regex.test(password2)) {
-        return false;
-    }
-    if (password1 === '' || password2 === '') {
-        return false;
+        return new ValidationResult(false, 'Such invalid :(', 'red');
     }
     if (!(password1 === password2)) {
-        return false;
+        return new ValidationResult(false, 'Passwords such not alike :(', 'red');
     }
-    return true;
+    return new ValidationResult(true, 'Looks good :)', 'green');
 };

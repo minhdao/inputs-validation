@@ -39,17 +39,11 @@ phones.forEach((phone) => {
 passwords.forEach((password) => {
     password.addEventListener('input', (event) => {
         password.value = prepareInput(password.value);
-        if (validPasswords(passwords[0].value, passwords[1].value)) {
-            passwords[0].style.borderColor = 'green';
-            addFeedback(passwords[0], true, 'Look good :)');
-            passwords[1].style.borderColor = 'green';
-            addFeedback(passwords[1], true, 'Look good :)');
-        } else {
-            passwords[0].style.borderColor = 'red';
-            addFeedback(passwords[0], false, 'Empty or not matched :(');
-            passwords[1].style.borderColor = 'red';
-            addFeedback(passwords[1], false, 'Empty or not matched :(');
-        }
+        let result = validPasswords(passwords[0].value, passwords[1].value);
+        passwords[0].style.borderColor = result.color;
+        passwords[1].style.borderColor = result.color;
+        addFeedback(passwords[0], result.isValid, result.text);
+        addFeedback(passwords[1], result.isValid, result.text);
     });
 });
 
