@@ -59,13 +59,13 @@ let validEmail = (email) => {
  */
 let validPhone = (phone) => {
     let regex = /[0-9]/;
-    if (emptyInput(phone)) {
-        return false;
+    if (!emptyInput(phone).isValid) {
+        return new ValidationResult(false, 'Such empty :(', 'red');
     }
     if (!regex.test(phone)) {
-        return false;
+        return new ValidationResult(false, 'Such invalid :(', 'red');
     }
-    return true;
+    return new ValidationResult(true, 'Looks good :)', 'green');
 };
 
 /**

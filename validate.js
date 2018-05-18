@@ -19,9 +19,7 @@ requiredInputs.forEach((input) => {
 emails.forEach((email) => {
     email.addEventListener('input', (event) => {
         email.value = prepareInput(email.value);
-        console.log(email.value);
         let result = validEmail(email.value);
-        console.log(result);
         email.style.borderColor = result.color;
         addFeedback(email, result.isValid, result.text);
     });
@@ -31,13 +29,9 @@ emails.forEach((email) => {
 phones.forEach((phone) => {
     phone.addEventListener('input', (event) => {
         phone.value = prepareInput(phone.value);
-        if (validPhone(phone.value)) {
-            phone.style.borderColor = 'green';
-            addFeedback(phone, true, 'Look good :)');
-        } else {
-            phone.style.borderColor = 'red';
-            addFeedback(phone, false, 'Bad format :(');
-        }
+        let result = validPhone(phone.value);
+        phone.style.borderColor = result.color;
+        addFeedback(phone, result.isValid, result.text);
     });
 });
 
