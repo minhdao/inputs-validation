@@ -1,6 +1,19 @@
 console.log('validate-functions.js loaded ...');
 
 /**
+ * [ValidationResult object constructor]
+ * @param  {Boolean}   isValid [true if input is valid, false other wise]
+ * @param  {[string]}  text    [text to be display]
+ * @param  {[string]}  color   [border color of the input]
+ * @return {[Object]}          [ValidationResult]
+ */
+let ValidationResult = function(isValid, text, color) {
+    this.isValid = isValid;
+    this.text = text;
+    this.color = color;
+};
+
+/**
  * [prepareInput remove extra spaces for each input]
  * @param  {[string]} input [input from user]
  * @return {[type]}         [no return]
@@ -15,23 +28,11 @@ let prepareInput = (input) => {
  * @return {Promise}       [true if '' value, false otherwise]
  */
 let emptyInput = (input) => {
-    let result = {
-        text: '',
-        color: '',
-        valid: false
-    };
-
     if (input === '') {
-        result.text = 'Input is empty :(';
-        result.color = 'red';
-        result.valid = false;
+        return new ValidationResult(false, 'Such empty :(', 'red');
     } else {
-        result.text = 'Looks good :)';
-        result.color = 'green';
-        result.valid = true;
+        return new ValidationResult(true, 'Looks good :)', 'green');
     }
-
-    return result;
 };
 
 /**

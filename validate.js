@@ -10,13 +10,8 @@ requiredInputs.forEach((input) => {
     input.addEventListener('input', (event) => {
         input.value = prepareInput(input.value);
         let result = emptyInput(input.value);
-        if (result.valid) {
-            input.style.borderColor = result.color;
-            addFeedback(input, result.valid, result.text);
-        } else {
-            input.style.borderColor = result.color;
-            addFeedback(input, result.valid, result.text);
-        }
+        input.style.borderColor = result.color;
+        addFeedback(input, result.isValid, result.text);
     });
 });
 
