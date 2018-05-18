@@ -17,15 +17,17 @@ let prepareInput = (input) => {
 let emptyInput = (input) => {
     let result = {
         text: '',
-        color: 'green',
+        color: '',
         valid: false
     };
 
     if (input === '') {
         result.text = 'Input is empty :(';
+        result.color = 'red';
         result.valid = false;
     } else {
         result.text = 'Looks good :)';
+        result.color = 'green';
         result.valid = true;
     }
 
