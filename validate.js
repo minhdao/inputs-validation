@@ -9,12 +9,13 @@ let passwords = document.querySelectorAll('.password');
 requiredInputs.forEach((input) => {
     input.addEventListener('input', (event) => {
         input.value = prepareInput(input.value);
-        if (emptyInput(input.value)) {
-            input.style.borderColor = 'red';
-            addFeedback(input, false, 'Cannot be empty :(');
+        let result = emptyInput(input.value);
+        if (result.valid) {
+            input.style.borderColor = 'green';
+            addFeedback(input, result.valid, result.text);
         } else {
             input.style.borderColor = 'green';
-            addFeedback(input, true, 'Looks good :)');
+            addFeedback(input, result.valid, result.text);
         }
     });
 });

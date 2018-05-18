@@ -15,11 +15,20 @@ let prepareInput = (input) => {
  * @return {Promise}       [true if '' value, false otherwise]
  */
 let emptyInput = (input) => {
+    let result = {
+        text: '',
+        valid: false
+    };
+
     if (input === '') {
-        return true;
+        result.text = 'Input is empty :(';
+        result.valid = false;
     } else {
-        return false;
+        result.text = 'Looks good :)';
+        result.valid = true;
     }
+
+    return result;
 };
 
 /**
