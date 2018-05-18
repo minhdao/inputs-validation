@@ -17,6 +17,7 @@ let prepareInput = (input) => {
 let emptyInput = (input) => {
     let result = {
         text: '',
+        color: 'green',
         valid: false
     };
 

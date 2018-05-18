@@ -11,10 +11,10 @@ requiredInputs.forEach((input) => {
         input.value = prepareInput(input.value);
         let result = emptyInput(input.value);
         if (result.valid) {
-            input.style.borderColor = 'green';
+            input.style.borderColor = result.color;
             addFeedback(input, result.valid, result.text);
         } else {
-            input.style.borderColor = 'green';
+            input.style.borderColor = result.color;
             addFeedback(input, result.valid, result.text);
         }
     });
